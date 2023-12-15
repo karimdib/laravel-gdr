@@ -1,0 +1,9 @@
+@import '~bootstrap/scss/bootstrap';
+
+@import './partials/movie.scss';
+
+ul,
+li,
+ol {
+    list-style: none;
+}
