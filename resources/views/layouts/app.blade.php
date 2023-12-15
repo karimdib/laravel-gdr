@@ -10,14 +10,13 @@
 </head>
 
 <body>
+    <header>
+        <h1>Characters</h1>
+    </header>
     <main>
-        <header>
-            <h1>movies</h1>
-        </header>
         @yield('content')
     </main>
     <footer>
-        contattaci
     </footer>
 </body>
 
