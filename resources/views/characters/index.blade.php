@@ -55,6 +55,15 @@
                     </td>
                     <td>
                         <a class="btn btn-sm btn-warning" href="{{ route('characters.edit', $character) }}">Edit</a>
+                        
+                    </td>
+                    <td>
+                        <form action="{{ route('characters.destroy', $character) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @empty
@@ -66,6 +75,8 @@
     <a href="{{ route('characters.create') }}">
         <button class="btn btn-outline-primary">Create Character</button>
     </a>
+
+    
 
 
 
