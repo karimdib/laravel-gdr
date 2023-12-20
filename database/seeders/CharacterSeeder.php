@@ -21,6 +21,7 @@ class CharacterSeeder extends Seeder
             $new_character->defense = $faker->randomNumber(2, false);
             $new_character->speed = $faker->randomNumber(2, false);
             $new_character->hp = $faker->randomNumber(4, false);
+            $new_character->attack = $faker->randomNumber(2, false);
             $new_character->save();
         }
     }
