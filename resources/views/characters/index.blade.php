@@ -53,6 +53,9 @@
                             {{ $character->attack }}
                         </a>
                     </td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" href="{{ route('characters.edit', $character) }}">Edit</a>
+                    </td>
                 </tr>
             @empty
                 Nessun personaggio trovato!
