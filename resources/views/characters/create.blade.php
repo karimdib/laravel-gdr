@@ -3,43 +3,52 @@
 @section('title', 'Create Character')
 
 @section('content')
-    <div class="container p-5">
+    <div class="container rounded rounded-4 p-5 shadow bg-white">
 
-        <form action="{{ route('characters.store')}}" method="POST">
+        <form action="{{ route('characters.store') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="name">Character Name</label>
-                <input class="form-control" type="text" name="name" id="name">
+                <input class="form-control" type="text" name="name" id="name" required>
             </div>
 
             <div class="mb-3">
                 <label for="hp">HP</label>
-                <input class="form-control" type="text" name="hp" id="hp" required>
+                <input class="form-control" type="number" name="hp" id="hp" min="0" max="9999"
+                    required>
             </div>
 
             <div class="mb-3">
                 <label for="attack">Attack</label>
-                <input class="form-control" type="number" name="attack" id="attack" required>
+                <input class="form-control" type="number" name="attack" id="attack" min="0" max="999"
+                    required>
             </div>
 
             <div class="mb-3">
                 <label for="defense">Defense</label>
-                <input class="form-control" type="number" name="defense" id="defense" required>
+                <input class="form-control" type="number" name="defense" id="defense" min="0" max="999"
+                    required>
             </div>
 
             <div class="mb-3">
                 <label for="speed">Speed</label>
-                <input class="form-control" type="number" name="speed" id="speed" required>
+                <input class="form-control" type="number" name="speed" id="speed" min="0" max="999"
+                    required>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-5">
                 <label for="bio">Character Bio</label>
-                <textarea class="form-control" name="bio" id="bio" rows="2">Character bio...</textarea>
+                <textarea class="form-control" name="bio" id="bio" rows="2"></textarea>
             </div>
 
-            <div class="mb-3">
+            <div class="d-flex gap-3">
                 <input class="btn btn-primary" type="submit" value="Submit">
+
+                <a href="{{ url()->previous() }}">
+                    <button class="btn btn-danger" type="button">Cancel</button>
+                </a>
             </div>
+
         </form>
 
     </div>

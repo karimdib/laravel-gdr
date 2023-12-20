@@ -1,0 +1,16 @@
+.confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .confirm-box {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 4px solid rgb(185, 0, 0);
+        border-radius: 25px;
+        padding: 60px;
+        box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.5);
+    }
+}
