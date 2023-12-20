@@ -5,7 +5,7 @@
 @section('content')
     <div class="container p-5">
 
-        <form action="" method="POST">
+        <form action="{{ route('characters.store')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="name">Character Name</label>
@@ -33,8 +33,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="description">Character Bio</label>
-                <textarea class="form-control" name="description" id="description" rows="2">Character bio...</textarea>
+                <label for="bio">Character Bio</label>
+                <textarea class="form-control" name="bio" id="bio" rows="2">Character bio...</textarea>
             </div>
 
             <div class="mb-3">
