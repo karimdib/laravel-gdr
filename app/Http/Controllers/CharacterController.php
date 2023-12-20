@@ -12,8 +12,14 @@ class CharacterController extends Controller
         $characters = Character::all();
         return view('characters.index', compact('characters'));
     }
+
     public function show(Character $character)
     {
         return view('characters.show', compact('character'));
+    }
+
+    public function create()
+    {
+        return view('characters.create');
     }
 }
