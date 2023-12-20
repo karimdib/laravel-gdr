@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('bio');
-            $table->unsignedTinyInteger('defense');
-            $table->unsignedTinyInteger('speed');
             $table->unsignedSmallInteger('hp');
             $table->unsignedTinyInteger('attack');
+            $table->unsignedTinyInteger('defense');
+            $table->unsignedTinyInteger('speed');
             $table->timestamps();
         });
     }
