@@ -44,12 +44,3 @@
     </div>
 
 @endsection
-
-
-
-{{-- {{ $character->name }}
-{{ $character->bio }}
-{{ $character->hp }}
-{{ $character->attack }}
-{{ $character->defense }}
-{{ $character->speed }} --}}
