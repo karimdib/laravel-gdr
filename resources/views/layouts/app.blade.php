@@ -9,14 +9,14 @@
     @vite('resources/js/app.js')
 </head>
 
-<body class="d-flex flex-column vh-100 bg-secondary bg-opacity-25">
-    <header class="bg-success bg-opacity-75 p-3 shadow text-white">
+<body class="d-flex flex-column vh-100">
+    <header class="bg-dark bg-opacity-100 p-3 shadow text-light">
         @include('partials.header')
     </header>
-    <main class="bg-success bg-opacity-25 p-5 flex-grow-1">
+    <main class="bg-dark bg-opacity-25 flex-grow-1">
         @yield('content')
     </main>
-    <footer class="bg-success bg-opacity-75 p-3 shadow text-white">
+    <footer class="bg-dark bg-opacity-100 p-3 shadow text-light">
         @include('partials.footer')
     </footer>
     @include('partials.destroyModal')
