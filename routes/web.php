@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CharacterController;
 
@@ -13,6 +14,16 @@ use App\Http\Controllers\CharacterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 
 Route::get('/', [CharacterController::class, 'index'])->name('characters.index');
@@ -28,3 +39,6 @@ Route::get('/characters/{character}/edit', [CharacterController::class, 'edit'])
 Route::put('/characters/{character}', [CharacterController::class, 'update'])->name('characters.update');
 
 Route::delete('/characters/{character}', [CharacterController::class, 'destroy'])->name('characters.destroy');
+
+
+require __DIR__ . '/auth.php';
