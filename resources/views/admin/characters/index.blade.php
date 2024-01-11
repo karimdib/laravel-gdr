@@ -11,6 +11,7 @@
                     <div class="card-text name">{{ $character->name }}</div>
                     <div class="card-text bio">{{ $character->bio }}</div>
                     <div class="card-stats">
+                        <div class="card-text"><span class="stats">TYPE </span>{{ $character->type->name }}</div>
                         <div class="card-text hp"><span class="stats">HP </span>{{ $character->hp }}</div>
                         <div class="card-text atk"><span class="stats">ATK </span>{{ $character->attack }}</div>
                         <div class="card-text def"><span class="stats">DEF </span>{{ $character->defense }}</div>

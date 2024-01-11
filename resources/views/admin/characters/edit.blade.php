@@ -17,6 +17,16 @@
             </div>
 
             <div class="mb-3">
+                <label for="type_id" class="form-label">Class</label>
+                <select name="type_id" class="form-control" id="type_id">
+                    <option value="">Select class</option>
+                    @foreach ($types as $type)
+                        <option @selected(old('type_id', optional($character->type)->id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="hp">HP</label>
                 <input class="form-control" type="number" name="hp" id="hp" min="0" max="9999"
                     required value="{{ $character->hp }}">

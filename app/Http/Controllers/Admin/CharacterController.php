@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Character;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 
 class CharacterController extends Controller
 {
@@ -21,7 +22,8 @@ class CharacterController extends Controller
 
     public function create()
     {
-        return view('admin.characters.create');
+        $types = Type::orderBy('name', 'ASC')->get();
+        return view('admin.characters.create', compact('types'));
     }
 
     public function store(Request $request)
@@ -35,7 +37,8 @@ class CharacterController extends Controller
 
     public function edit(Character $character)
     {
-        return view('admin.characters.edit', compact('character'));
+        $types = Type::orderBy('name', 'ASC')->get();
+        return view('admin.characters.edit', compact('character', 'types'));
     }
 
     public function update(Request $request, Character $character)
