@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CharacterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,14 @@ use App\Http\Controllers\CharacterController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('characters', CharacterController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -26,19 +32,22 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/', [CharacterController::class, 'index'])->name('characters.index');
 
-Route::get('/characters/create', [CharacterController::class, 'create'])->name('characters.create');
 
-Route::get('/characters/{character}', [CharacterController::class, 'show'])->name('characters.show');
 
-Route::post('/characters', [CharacterController::class, 'store'])->name('characters.store');
+// Route::get('/', [CharacterController::class, 'index'])->name('characters.index');
 
-Route::get('/characters/{character}/edit', [CharacterController::class, 'edit'])->name('characters.edit');
+// Route::get('/characters/create', [CharacterController::class, 'create'])->name('characters.create');
 
-Route::put('/characters/{character}', [CharacterController::class, 'update'])->name('characters.update');
+// Route::get('/characters/{character}', [CharacterController::class, 'show'])->name('characters.show');
 
-Route::delete('/characters/{character}', [CharacterController::class, 'destroy'])->name('characters.destroy');
+// Route::post('/characters', [CharacterController::class, 'store'])->name('characters.store');
+
+// Route::get('/characters/{character}/edit', [CharacterController::class, 'edit'])->name('characters.edit');
+
+// Route::put('/characters/{character}', [CharacterController::class, 'update'])->name('characters.update');
+
+// Route::delete('/characters/{character}', [CharacterController::class, 'destroy'])->name('characters.destroy');
 
 
 require __DIR__ . '/auth.php';

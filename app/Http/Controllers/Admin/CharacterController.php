@@ -1,26 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Character;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CharacterController extends Controller
 {
     public function index()
     {
         $characters = Character::all();
-        return view('characters.index', compact('characters'));
+        return view('admin.characters.index', compact('characters'));
     }
 
     public function show(Character $character)
     {
-        return view('characters.show', compact('character'));
+        return view('admin.characters.show', compact('character'));
     }
 
     public function create()
     {
-        return view('characters.create');
+        return view('admin.characters.create');
     }
 
     public function store(Request $request)
@@ -29,12 +30,12 @@ class CharacterController extends Controller
 
         $new_character = Character::create($data);
 
-        return redirect()->route('characters.show', $new_character);
+        return redirect()->route('admin.characters.show', $new_character);
     }
 
     public function edit(Character $character)
     {
-        return view('characters.edit', compact('character'));
+        return view('admin.characters.edit', compact('character'));
     }
 
     public function update(Request $request, Character $character)
@@ -43,13 +44,13 @@ class CharacterController extends Controller
 
         $character->update($data);
 
-        return redirect()->route('characters.show', $character);
+        return redirect()->route('admin.characters.show', $character);
     }
 
     public function destroy(Character $character)
     {
         $character->delete();
 
-        return redirect()->route('characters.index');
+        return redirect()->route('admin.characters.index');
     }
 }
