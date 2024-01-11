@@ -13,38 +13,17 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        $items = [
-            [
-                'name' => 'Potion of Healing',
-                'description' => 'A magical potion that restores health when consumed.',
-                'price' => 50.0,
-            ],
-            [
-                'name' => 'Scroll of Fireball',
-                'description' => 'A scroll containing the Fireball spell, unleashes fiery destruction.',
-                'price' => 75.0,
-            ],
-            [
-                'name' => 'Dagger +1',
-                'description' => 'A finely crafted dagger with a magical enchantment for improved damage.',
-                'price' => 100.0,
-            ],
-            [
-                'name' => 'Ring of Invisibility',
-                'description' => 'A mystical ring that grants the wearer the ability to become invisible at will.',
-                'price' => 200.0,
-            ],
-            [
-                'name' => 'Wand of Lightning Bolts',
-                'description' => 'A wand that can unleash powerful bolts of lightning upon command.',
-                'price' => 150.0,
-            ],
 
-        ];
+        $items = config('items');
 
         foreach ($items as $item) {
+
             $new_item = new Item();
-            
+            $new_item->name = $item['name'];
+            $new_item->description = $item['description'];
+            $new_item->price = $item['price'];
+
+            $new_item->save();
         }
     }
 }
