@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
             TypeSeeder::class,
             CharacterSeeder::class,
+            ItemSeeder::class,
 
         ]);
     }
