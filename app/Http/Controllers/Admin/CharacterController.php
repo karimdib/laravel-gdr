@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Character;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
@@ -23,7 +24,8 @@ class CharacterController extends Controller
     public function create()
     {
         $types = Type::orderBy('name', 'ASC')->get();
-        return view('admin.characters.create', compact('types'));
+        $items = Item::orderBy('name','ASC')->get();
+        return view('admin.characters.create', compact('types', 'items'));
     }
 
     public function store(Request $request)
