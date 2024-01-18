@@ -7,6 +7,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 
 class CharacterController extends Controller
 {
@@ -31,6 +32,11 @@ class CharacterController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $path = Storage::put('uploads/images',$request->image);
+            $data['image'] = $path;
+        }
 
         $new_character = Character::create($data);
 

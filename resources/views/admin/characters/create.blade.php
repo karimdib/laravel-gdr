@@ -5,11 +5,16 @@
 @section('content')
     <div class="container rounded rounded-4 p-5 shadow bg-white">
 
-        <form action="{{ route('admin.characters.store') }}" method="POST">
+        <form action="{{ route('admin.characters.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name">Character Name</label>
                 <input class="form-control" type="text" name="name" id="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input class="form-control" type="file" id="image" name="image">
             </div>
 
             <div class="mb-3">
