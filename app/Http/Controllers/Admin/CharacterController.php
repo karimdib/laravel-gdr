@@ -24,7 +24,7 @@ class CharacterController extends Controller
     public function create()
     {
         $types = Type::orderBy('name', 'ASC')->get();
-        $items = Item::orderBy('name','ASC')->get();
+        $items = Item::orderBy('name', 'ASC')->get();
         return view('admin.characters.create', compact('types', 'items'));
     }
 
@@ -34,13 +34,18 @@ class CharacterController extends Controller
 
         $new_character = Character::create($data);
 
+        if ($request->has('items')) {
+            $new_character->items()->attach($data['items']);
+        }
+
         return redirect()->route('admin.characters.show', $new_character);
     }
 
     public function edit(Character $character)
     {
         $types = Type::orderBy('name', 'ASC')->get();
-        return view('admin.characters.edit', compact('character', 'types'));
+        $items = Item::orderBy('name', 'ASC')->get();
+        return view('admin.characters.edit', compact('character', 'types', 'items'));
     }
 
     public function update(Request $request, Character $character)
@@ -49,11 +54,18 @@ class CharacterController extends Controller
 
         $character->update($data);
 
+        if ($request->has('items')) {
+            $character->items()->sync($data['items']);
+        } else {
+            $character->items()->detach();
+        }
+
         return redirect()->route('admin.characters.show', $character);
     }
 
     public function destroy(Character $character)
     {
+        $character->items()->detach();
         $character->delete();
 
         return redirect()->route('admin.characters.index');
