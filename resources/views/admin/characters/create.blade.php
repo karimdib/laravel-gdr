@@ -22,6 +22,21 @@
                 </select>
             </div>
 
+            <div class="form-group mb-3">
+                <p>Choose your items:</p>
+                <div class="d-flex flex-wrap gap-4 ">
+                    @foreach ($items as $item)
+                        <div class="form-check">
+                            <input name="items[]" class="form-check-input" type="checkbox" value="{{ $item->id }}"
+                                id="item-{{ $item->id }}" @checked(in_array($item->id, old('items', [])))>
+                            <label class="form-check-label" for="item-{{ $item->id }}">
+                                {{ $item->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
             <div class="mb-3">
                 <label for="hp">HP</label>
                 <input class="form-control" type="number" name="hp" id="hp" min="0" max="9999"
