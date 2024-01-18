@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Character;
 use App\Models\Type;
+use App\Models\Item;
+
 
 class CharacterSeeder extends Seeder
 {
@@ -15,7 +17,7 @@ class CharacterSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        
+
         for ($i = 0; $i < 5; $i++) {
             $new_character = new Character();
             $new_character->name = $faker->name();
@@ -26,15 +28,7 @@ class CharacterSeeder extends Seeder
             $new_character->speed = $faker->randomNumber(2, false);
             $new_character->type_id = Type::all()->random()->id;
             $new_character->save();
+            $new_character->items()->attach(Item::all()->random(5));
         }
     }
 }
-
-
-// $table->id();
-// $table->string('name');
-// $table->text('bio');
-// $table->unsignedTinyInteger('defense');
-// $table->unsignedTinyInteger('speed');
-// $table->unsignedSmallInteger('hp');
-// $table->timestamps();
