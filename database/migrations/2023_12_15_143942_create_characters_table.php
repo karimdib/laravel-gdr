@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('attack');
             $table->unsignedTinyInteger('defense');
             $table->unsignedTinyInteger('speed');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class Character extends Model
         'speed',
         'attack',
         'hp',
+        'image',
         'type_id'
     ];
 

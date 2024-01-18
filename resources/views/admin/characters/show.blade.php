@@ -20,6 +20,7 @@
             <li><span class="fw-bold">DEF</span> {{ $character->defense }}</li>
             <li> <span class="fw-bold">SPD</span> {{ $character->speed }}</li>
         </ul>
+        <img class="img-fluid" src="{{ asset('storage/' . $character->image) }}" alt="Immagine del progetto">
 
     </div>
 @endsection
