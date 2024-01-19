@@ -58,6 +58,15 @@ class CharacterController extends Controller
     {
         $data = $request->all();
 
+        if ($request->hasFile('image')) {
+            $path = Storage::put('uploads/images',$request->image);
+            $data['image'] = $path;
+
+            if ($character->image) {
+                Storage::delete($character->image);
+            }
+        }
+
         $character->update($data);
 
         if ($request->has('items')) {
